@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	浙传校园临时通行码
+</title><link rel="stylesheet" href="./1.css" />
+    <script src="./jquery-1.11.1.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        var ewmzt =1;//二维码状态
+
+        var qjcs =0;//二维码状态
+
+        function disp_prompt()
+        {
+        var name=prompt("请输入姓名","");
+        var grade=prompt("请输入班级","");
+        if(name==null) name="我是谁";
+        if(grade==null) name="我是谁";
+        document.getElementById("xingming").innerText = "姓名："+ name;
+        document.getElementById("banji").innerText = "班级："+ grade;
+        }
+
+        function to2(x){
+            if(x<10) return "0"+x;
+            return x;
+        }
+
+        var bm ='浙江传媒学院/学生/文学院/戏剧影视文学/19戏剧影视文学1班';//二维码状态
+        $(window).load(function () {
+            //if (qjcs >= 2) {
+            //    $('#button2').attr("disabled", true);
+            //    $('#button2').css("background-color", "gray");
+            //    $("#button2").text('每周仅2次免审批机会');
+
+
+            //}
+
+
+            setInterval(() => {
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var day = date.getDate();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                //  console.log(year + "-" + month + "月" + day+"日");
+                //  console.log(hour + ":" + minute + ":" + second);
+                document.getElementById("rq").innerText = month + "月" + day + "日";
+                document.getElementById("sj").innerText = hour + ":" + minute + ":" + second;
+                var lhour=hour-1;
+                if(hour-1 < 0) lhour=23;
+                var rhour=hour+3;
+                if(hour+3 > 23) rhour=rhour-24;
+                document.getElementById("time").innerText = "通行时间："+year+"-"+to2(month)+"-"+to2(day)+" "+to2(lhour)+":30-"+year+"/"+to2(month)+"/"+to2(day)+" "+to2(rhour)+":30:00";
+            }, 1000);
+        })
+
+
+
+    </script>
+</head>
+
+
+
+<body onload=(disp_prompt())>
+   
+   <div class="max">
+           <span id="GUI" style="display:none">e1ffccf4876a4cad83c696527aeb6cd9</span>
+            <span id="SZXQ" style="display:none"></span>
+			<span class="max-span">守护校园 &nbsp; &nbsp; &nbsp; &nbsp;人人有责</span>
+			<div class="max-sk"></div>
+			<div class="max-sk-nz" style="height:1450px">
+				<span class="max-sk-nz-zt" style="margin-top: 20px;" id="xingming"></span>
+				<span class="max-sk-nz-zt" id="banji"></span>
+                
+
+                <span class="max-sk-nz-sj" style="display:block;width: 100%;height: 70px;color: #000000;font-size: 110px;text-align: center;font-weight: bold;float: left;margin-top: 20px;" id="rq"></span></br>
+                <span class="max-sk-nz-sj" style="display:block;width: 100%;height: 70px;color: #000000;font-size: 110px;text-align: center;font-weight: bold;float: left;margin-top:30px;"  id="sj"></span></br>
+
+				<div class="max-sk-nz-ewm">
+					<div class="ewm"><img id="viewConttainer1" style="width:100%;height:100%" src='./qrcode.png'></div><!-- 二维码 -->
+			    </div>
+              
+				<span class="max-sk-nz-ztss" style="margin-top: 10px;font-size:35px;margin-bottom:30px;" id="time"></span>
+				
+                <button class="anniu" id="button1" onclick="window.location.href = 'http://www.twiiter.com'" style="margin-top: 30px;display:block;">报备申请</button>
+
+                  <button class="anniu1" id="button2" onclick="window.location.href = 'http://www.google.com'" style="display:block;">免审批报备</button>
+
+                 <button class="anniu1" id="button4" onclick="window.location.href = 'http://www.taobao.com'" style="display:block;">出省报备</button>
+
+                <button class="anniu1" id="button3" onclick="window.location.href = 'http://www.baidu.com'" style="display:none" >学期结束离校</button>
+
+                <span class="max-sk-nz-ztss" style="margin-top: 60px;display:block" >健康码为绿码</span>
+
+			
+
+
+                
+            </div>
+			 
+		</div>
+
+</body>
+</html>
