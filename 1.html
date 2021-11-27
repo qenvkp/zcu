@@ -52,10 +52,12 @@
                 document.getElementById("rq").innerText = month + "月" + day + "日";
                 document.getElementById("sj").innerText = hour + ":" + minute + ":" + second;
                 var lhour=hour-1;
-                if(hour-1 < 0) lhour=23;
+                var lday=day;
+                var rday=day;
+                if(hour-1 < 0) {lhour=23;lday=day-1;}
                 var rhour=hour+3;
-                if(hour+3 > 23) rhour=rhour-24;
-                document.getElementById("time").innerText = "通行时间："+year+"-"+to2(month)+"-"+to2(day)+" "+to2(lhour)+":30-"+year+"/"+to2(month)+"/"+to2(day)+" "+to2(rhour)+":30:00";
+                if(hour+3 > 23) {rhour=rhour-24;rday=day+1}
+                document.getElementById("time").innerText = "通行时间："+year+"-"+to2(month)+"-"+to2(lday)+" "+to2(lhour)+":30-"+year+"/"+to2(month)+"/"+to2(rday)+" "+to2(rhour)+":30:00";
             }, 1000);
         })
 
